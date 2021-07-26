@@ -1,7 +1,7 @@
 import {ThreadInstance,registry} from '../../ThreadManager';
 module.exports = {
 	name: 'archive',
-	aliases: ['close', 'done', 'end'],
+	aliases: ['close', 'done', 'end', 'solved'],
 	description: 'archive your help channel',
 	async execute(message,args) {
 		let chan = registry.get(message.channel);
