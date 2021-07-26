@@ -38,7 +38,7 @@ export const options = [
 	},
 	{
 		label: "Game",
-		description: "Game preformance, crashing, other troubleshooting",
+		description: "Game performance, crashing, other troubleshooting",
 		value: "game_help",
 	},
 	{
