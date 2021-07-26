@@ -67,6 +67,7 @@ client.on("message", (message) => {
         try {
             let maycommand = client.commands.get(command) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command));
             maycommand.execute(message, args);
+            return;
         }
         catch (error) {
             message.reply('there was an error trying to execute that command!');
@@ -74,7 +75,7 @@ client.on("message", (message) => {
     }
     if (message.channel.type !== "GUILD_TEXT" ||
         message.channel.isThread() ||
-        message.channel.name !== "forum" ||
+        message.channel.id !== config_example_1.config.hostChannel ||
         message.type != "DEFAULT" ||
         message.author.bot) {
         return;

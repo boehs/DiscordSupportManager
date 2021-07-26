@@ -4,16 +4,7 @@ const util = require("util");
 
 export const registry = new Collection();
 
-export interface ThreadInstanceI {
-	channel: ThreadChannel,
-	author: GuildMember,
-	interaction: SelectMenuInteraction,
-	initialMessage: Message,
-	closed: Boolean,
-	claimer: GuildMember
-}
-
-export class ThreadInstance implements ThreadInstanceI {
+export class ThreadInstance {
 	constructor(
 		channel: ThreadChannel,
 		interaction: SelectMenuInteraction,
@@ -24,11 +15,17 @@ export class ThreadInstance implements ThreadInstanceI {
 			this.initialMessage = await this.interaction.message.fetchReference();
 			this.author = this.initialMessage.author;
 			this.closed = this.channel.archived;
-			
+
 			registry.set(this.channel, this);
 			return this;
 		})();
 	}
+    channel: ThreadChannel;
+    author: GuildMember;
+    interaction: SelectMenuInteraction;
+    initialMessage: Message;
+    closed: Boolean;
+    claimer: GuildMember;
 
 	static async new(interaction: Interaction) {
 
